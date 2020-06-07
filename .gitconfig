@@ -1,0 +1,8 @@
+[user]
+	name = woot
+	email = worrawutp@hellospec.com
+[core]
+	editor = vim
+
+[alias]
+         hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
