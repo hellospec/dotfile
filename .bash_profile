@@ -1,28 +1,12 @@
-# shorten prompt
-PS1='\[\033[01;32m\]\u:\W\[\033[00m\]$ '
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#  exec tmux
+# fi
 
-SSH_ENV="$HOME/.ssh/environment"
+export PATH="$HOME/.rbenv/bin:/Users/woot/.rbenv/shims:$PATH"
+eval "$(rbenv init -)"
+export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
 
-function start_agent {
-	echo "Init new SSH agen.."
-	/usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-	echo succeeded
-	chmod 600 "${SSH_ENV}"
-	. "${SSH_ENV}" > /dev/null
-	/usr/bin/ssh-add;
-}
+export CLICOLOR=1
+export TERM=xterm-256color
 
-if [ -f "${SSH_ENV}" ]; then
-	. "${SSH_ENV}" > /dev/null
-	ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || { 
-		start_agent;
-}
-else
-	start_agent;
-fi
-
-# call bashrc if there is any
-# https://github.com/microsoft/WSL/issues/2067
-if [[ -f ~/.bashrc ]] ; then
-	. ~/.bashrc
-fi
+export PATH="$HOME/.cargo/bin:$PATH"

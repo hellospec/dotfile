@@ -9,3 +9,13 @@ export TERM=xterm-256color
 alias gs='git status'
 alias gb='git branch -v'
 alias gc='git checkout'
+alias gd='git diff .'
+
+alias vimrc='vim ~/.vimrc'
+alias xx='exit'
+
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files --hidden'
+  # export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi
+
