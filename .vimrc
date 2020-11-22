@@ -9,7 +9,6 @@ set rtp +=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'jiangmiao/auto-pairs'
-" Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
@@ -26,8 +25,6 @@ Plugin 'ap/vim-css-color'
 call vundle#end()
 
 call plug#begin()
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
@@ -119,6 +116,7 @@ let g:emmet_html5 = 0
 let g:user_emmet_leader_key = ','
 " Also goog to setup a way to add html comment at cloing tag sepaerately
 inoremap <! <!-- --><Esc>gEa
+inoremap {/* {/*--- ---*/}<Esc>gEa
 
 
 " Move lines like Sublime
@@ -180,8 +178,9 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
-nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-p> :GFiles<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
 let g:fzf_preview_window = ''
 
 " let g:ragtag_global_maps = 1
