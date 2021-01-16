@@ -9,7 +9,6 @@ set rtp +=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'jiangmiao/auto-pairs'
-" Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
@@ -25,9 +24,7 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'ap/vim-css-color'
 call vundle#end()
 
-call plug#begin()
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
+call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
@@ -40,6 +37,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'rust-lang/rust.vim'
 Plug 'elmcast/elm-vim'
+Plug 'vimwiki/vimwiki'
+Plug 'https://github.com/alok/notational-fzf-vim'
 call plug#end()
 
 let mapleader = " "
@@ -119,6 +118,7 @@ let g:emmet_html5 = 0
 let g:user_emmet_leader_key = ','
 " Also goog to setup a way to add html comment at cloing tag sepaerately
 inoremap <! <!-- --><Esc>gEa
+inoremap {/* {/*-- --*/}<Esc>gEa
 
 
 " Move lines like Sublime
@@ -149,17 +149,11 @@ nnoremap <C-i> <C-z>
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
-" Quicker window movement
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-l> <C-w>l
 inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 
 " feavour Tim pope using vim surround
 nmap sr ysiw
-
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap * *zz
@@ -182,16 +176,9 @@ set diffopt+=vertical
 
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>fw bvey/<C-r>"<CR>
 let g:fzf_preview_window = ''
-
-" let g:ragtag_global_maps = 1
-" if exists("g:ctrlp_user_command")
-"   unlet g:ctrlp_user_command
-" endif
-" 
-" set wildignore+=*\\tmp\\*,*\\vendor\\*,*\\node_modules\\*,*\\dist\\*,*\\public\\*,*.swp,*.zip,*.exe
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-
 let g:vim_markdown_folding_disabled = 1
 
 " ALE setup
@@ -254,11 +241,11 @@ if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
 
+let g:vimwiki_list = [{ 'path': '~/Documents/notes/',
+       \ 'syntax':'markdown', 'ext': '.md' }]
+let g:nv_search_paths = ['~/Documents/notes/']
+ 
 
-" if (has("termguicolors"))
-"  set termguicolors
-" endif
-" 
 " for night-owl color-scheme
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
