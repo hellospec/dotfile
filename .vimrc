@@ -118,7 +118,7 @@ let g:emmet_html5 = 0
 let g:user_emmet_leader_key = ','
 " Also goog to setup a way to add html comment at cloing tag sepaerately
 inoremap <! <!-- --><Esc>gEa
-inoremap {/* {/*-- --*/}<Esc>gEa
+inoremap {/* {/*--- ---*/}<Esc>gEa
 
 
 " Move lines like Sublime
@@ -174,7 +174,7 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
-nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-p> :GFiles<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>fw bvey/<C-r>"<CR>
