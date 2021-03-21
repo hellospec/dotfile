@@ -2,43 +2,38 @@ filetype off
 filetype plugin indent on
 set nocompatible
 set encoding=utf-8
+set fileformat=unix
 syntax on
 syntax enable
 
-set rtp +=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-ragtag'
-Plugin 'pangloss/vim-javascript'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'tpope/vim-liquid'
-Plugin 'mxw/vim-jsx'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'ap/vim-css-color'
-call vundle#end()
-
-call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" call plug#begin('~/.vim/plugged')
+call plug#begin()
+Plug 'chun-yang/auto-pairs'
+Plug 'mattn/emmet-vim'
 Plug 'w0rp/ale'
+Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
-Plug 'haishanh/night-owl.vim'
-Plug 'cocopon/iceberg.vim'
-Plug 'relastle/bluewery.vim'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-fugitive'
+Plug 'rbong/vim-flog'
+Plug 'vim-ruby/vim-ruby'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'elmcast/elm-vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'ap/vim-css-color'
+Plug 'plasticboy/vim-markdown'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'rust-lang/rust.vim'
-Plug 'elmcast/elm-vim'
-Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki'                           
 Plug 'https://github.com/alok/notational-fzf-vim'
+Plug 'relastle/bluewery.vim'
+Plug 'haishanh/night-owl.vim'
+Plug 'cocopon/iceberg.vim'
 call plug#end()
 
 let mapleader = " "
@@ -116,9 +111,8 @@ let g:user_emmet_settings = {
 let g:emmet_html5 = 0
 "let g:user_emmet_expandabbr_key = '<Tab>'
 let g:user_emmet_leader_key = ','
-" Also goog to setup a way to add html comment at cloing tag sepaerately
 inoremap <! <!-- --><Esc>gEa
-inoremap {/* {/*--- ---*/}<Esc>gEa
+noremap {/* {/*--- ---*/}<Esc>gEa}
 
 
 " Move lines like Sublime
@@ -144,7 +138,11 @@ nnoremap <silent> <leader>t :term<CR>
 tnoremap kj <C-\><C-n>:q!<CR>
 tnoremap kn <C-\><C-n>
 
+" able to switch to background vim when hit <Tab>
 nnoremap <C-i> <C-z>
+nnoremap <silent> <silent> <Leader><Tab> :fg<CR>
+nnoremap <C-l> :bn<CR>
+nnoremap <C-k> :bp<CR>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -177,9 +175,10 @@ set diffopt+=vertical
 nnoremap <silent> <C-p> :GFiles<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <Leader>fw bvey/<C-r>"<CR>
+nnoremap <silent> <Leader>fw bvey/<C-r>"<CR>"
 let g:fzf_preview_window = ''
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_follow_anchor = 1
 
 " ALE setup
 " Set specific linters
@@ -241,10 +240,9 @@ if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
 
-let g:vimwiki_list = [{ 'path': '~/Documents/notes/',
-       \ 'syntax':'markdown', 'ext': '.md' }]
-let g:nv_search_paths = ['~/Documents/notes/']
- 
+let g:vimwiki_list = [{ 'path': '~/Documents/notes/', 'syntax':'markdown', 'ext': '.md' }]                  
+let g:nv_search_paths = ['~/Documents/notes/']  
+
 
 " for night-owl color-scheme
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
@@ -258,8 +256,6 @@ endif
 syntax enable
 set t_Co=256
 set background=dark
-" colorscheme night-owl
-" colorscheme bluewery
 colorscheme iceberg
 
 highlight clear LineNr
@@ -271,7 +267,6 @@ highlight Comment ctermbg=0
 hi jsComment cterm=NONE
 hi jsImport cterm=NONE
 hi jsFrom cterm=NONE
-" let g:lightline = { 'colorscheme': 'wombat' }
 let g:lightline = { 'colorscheme': 'iceberg' }
 
 " This setting is specifically for NightOwl theme
