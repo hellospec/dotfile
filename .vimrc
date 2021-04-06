@@ -174,7 +174,7 @@ set diffopt+=vertical
 
 nnoremap <silent> <C-p> :GFiles<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
-nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
+nnoremap <silent> <Leader>fg :Rg <C-R><C-W><CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>fw bvey/<C-r>"<CR>"
 let g:fzf_preview_window = ''
