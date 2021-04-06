@@ -174,6 +174,7 @@ set diffopt+=vertical
 
 nnoremap <silent> <C-p> :GFiles<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
+nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>fw bvey/<C-r>"<CR>"
 let g:fzf_preview_window = ''
@@ -248,12 +249,6 @@ let g:nv_search_paths = ['~/Documents/notes/']
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
-
-if !has('gui_running')
-  set t_Co=256
-endif
-
-syntax enable
 set t_Co=256
 set background=dark
 colorscheme iceberg
