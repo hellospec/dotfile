@@ -3,37 +3,47 @@ TERM = "xterm-256color"
 working_directory = "/Users/woot/CodeProject"
 
 # Colors (Iceberg Dark)
+# https://codeberg.org/miyaco/dotfiles/src/branch/main/alacritty/iceberg-dark.toml
 [colors]
 # Default colors
-[colors.primary]
-background = '#161821'
-foreground = '#d2d4de'
+draw_bold_text_with_bright_colors = false
 
-# Normal colors
-[colors.normal]
-black    = '#161821'
-red      = '#e27878'
-green    = '#b4be82'
-yellow   = '#e2a478'
-blue     = '#84a0c6'
-magenta  = '#a093c7'
-cyan     = '#89b8c2'
-white    = '#c6c8d1'
-
-# Bright colors
 [colors.bright]
-black    = '#6b7089'
-red      = '#e98989'
-green    = '#c0ca8e'
-yellow   = '#e9b189'
-blue     = '#91acd1'
-magenta  = '#ada0d3'
-cyan     = '#95c4ce'
-white    = '#d2d4de'
+black = "#6b7089"
+blue = "#91acd1"
+cyan = "#95c4ce"
+green = "#c0ca8e"
+magenta = "#ada0d3"
+red = "#e98989"
+white = "#d2d4de"
+yellow = "#e9b189"
+
+[colors.cursor]
+cursor = "#c6c8d1"
+text = "#161821"
+
+[colors.normal]
+black = "#1e2132"
+blue = "#84a0c6"
+cyan = "#89b8c2"
+green = "#b4be82"
+magenta = "#a093c7"
+red = "#e27878"
+white = "#c6c8d1"
+yellow = "#e2a478"
+
+[colors.primary]
+background = "#161821"
+foreground = "#c6c8d1"
+
+[colors.selection]
+background = "#c6c8d1"
+text = "#161821"
 
 [font]
-normal = { family = 'PragmataPro', style = 'Regular' }
-size     = 21.0
+# normal = { family = 'PragmataPro', style = 'Regular' }
+normal = { family = 'JetBrainsMono Nerd Font Mono', style = 'Regular' }
+size     = 18.0
 
 [scrolling]
 history = 10000
